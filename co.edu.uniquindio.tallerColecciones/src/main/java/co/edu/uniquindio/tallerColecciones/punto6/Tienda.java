@@ -16,13 +16,11 @@ public class Tienda {
     }
 
     public void eliminarProducto(String codigo){
-        ListIterator<Producto> listIterator = listaProductos.listIterator();
-        while(listIterator.hasNext()){
-            Producto producto = listIterator.next();
-            if(producto.getCodigo().equals(codigo)){
-                listaProductos.remove(producto);
-                System.out.println("producto eliminado con codigo: "+producto.getCodigo());
-            }
+        boolean eliminado = listaProductos.removeIf(producto -> producto.getCodigo().equals(codigo));
+        if (eliminado) {
+            System.out.println("Producto con código " + codigo + " eliminado correctamente.");
+        } else {
+            System.out.println("No se encontró un producto con el código " + codigo);
         }
 
     }

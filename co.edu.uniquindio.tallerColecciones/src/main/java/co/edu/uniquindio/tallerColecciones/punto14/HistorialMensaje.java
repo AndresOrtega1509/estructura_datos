@@ -13,9 +13,11 @@ public class HistorialMensaje {
 
     public void agregarMensaje(String mensaje) {
         if (historial.size() == LIMITE_MENSAJES) {
-            historial.poll(); // Elimina el mensaje más antiguo si el historial está lleno
+            // Elimina el mensaje más antiguo si el historial está lleno
+            historial.poll();
         }
-        historial.offer(mensaje); // Agrega el nuevo mensaje al final
+        // Agrega el nuevo mensaje al final
+        historial.offer(mensaje);
     }
 
     public void mostrarHistorial() {

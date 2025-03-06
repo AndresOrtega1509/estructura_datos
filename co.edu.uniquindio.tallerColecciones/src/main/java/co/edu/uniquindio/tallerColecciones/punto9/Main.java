@@ -9,6 +9,8 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         NavegadorWeb navegadorWeb = new NavegadorWeb();
 
+        // En este ejercicio, implementamos un swith-case para visualizar mejor la ejecución
+
         while (true) {
             System.out.println("\n--- Menú Navegación Web ---");
             String paginaActual = navegadorWeb.consultarPaginaActual();
