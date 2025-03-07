@@ -16,23 +16,35 @@ public class Tienda {
     }
 
     public void eliminarProducto(String codigo){
-        boolean eliminado = listaProductos.removeIf(producto -> producto.getCodigo().equals(codigo));
-        if (eliminado) {
-            System.out.println("Producto con código " + codigo + " eliminado correctamente.");
-        } else {
-            System.out.println("No se encontró un producto con el código " + codigo);
+        Iterator<Producto> iterator = listaProductos.iterator();
+        boolean encontrado = false;
+
+        while (iterator.hasNext()) {
+            Producto producto = iterator.next();
+            if (producto.getCodigo().equals(codigo)) {
+                iterator.remove();
+                System.out.println("Producto con código: " + codigo + ", eliminado correctamente.");
+                encontrado = true;
+                break;
+            }
         }
 
+        if (!encontrado) {
+            System.out.println("Producto con código: " + codigo + ", no encontrado.");
+        }
     }
 
     public Producto buscarProducto(String codigo){
-        for (Producto producto : listaProductos) {
-            if (producto.getCodigo().equalsIgnoreCase(codigo)) {
+        Iterator<Producto> iterator = listaProductos.iterator();
+
+        while (iterator.hasNext()) {
+            Producto producto = iterator.next();
+            if (producto.getCodigo().equals(codigo)) {
                 return producto;
             }
         }
-        return null;
 
+        return null;
     }
 
     public void listarPorNombre() {
