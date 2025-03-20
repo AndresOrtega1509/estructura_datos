@@ -26,7 +26,7 @@ public class ListaEnlazadaSimple {
         Nodo nuevo = new Nodo(valor);
         nuevo.setSiguiente(nodoPrimero);
         nodoPrimero = nuevo;
-        tamanio+=1;
+        tamanio++;
     }
 
     public void insertarNodoAlFinal(int valor){
@@ -40,7 +40,37 @@ public class ListaEnlazadaSimple {
             }
             actual.setSiguiente(nuevo);
         }
-        tamanio+=1;
+        tamanio++;
+    }
+
+    public void eliminarNodoAlInicio(){
+
+        if (nodoPrimero != null){
+            nodoPrimero = nodoPrimero.getSiguiente();
+            tamanio--;
+        }else {
+            System.out.println("Error al eliminar: lista vacia");
+        }
+    }
+
+    public void eliminarNodoAlFinal(){
+
+        if (nodoPrimero == null){
+            System.out.println("Error al eliminar: lista vacia");
+            return;
+        }
+
+        if (nodoPrimero.getSiguiente() == null){
+            nodoPrimero = null;
+        }else {
+            Nodo actual = nodoPrimero;
+
+            while (actual.getSiguiente().getSiguiente() != null){
+                actual = actual.getSiguiente();
+            }
+            actual.setSiguiente(null);
+        }
+        tamanio--;
     }
 
     public void mostrarLista() {
