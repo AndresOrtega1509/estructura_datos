@@ -10,11 +10,11 @@ public class ListaEnlazadaSimple {
         nodoPrimero = null;
     }
 
-    public Nodo getNodoPrimero(){
+    private Nodo getNodoPrimero(){
         return nodoPrimero;
     }
 
-    public void setNodoPrimero(Nodo nodoPrimero){
+    private void setNodoPrimero(Nodo nodoPrimero){
         this.nodoPrimero = nodoPrimero;
     }
 
@@ -80,6 +80,25 @@ public class ListaEnlazadaSimple {
             actual = actual.getSiguiente();
         }
         System.out.println("null");
+    }
+
+    public void add(int valor){
+        Nodo nodo = new Nodo(valor);
+        if (isEmpty()){
+            nodoPrimero = nodo;
+        }else {
+            Nodo aux = nodoPrimero; //i = 0
+
+            while (aux.getSiguiente() != null){ //n - i
+                aux = aux.getSiguiente();
+            }
+            aux.setSiguiente(nodo);
+        }
+        tamanio++;
+    }
+
+    public boolean isEmpty(){
+        return tamanio == 0;
     }
 
 }
